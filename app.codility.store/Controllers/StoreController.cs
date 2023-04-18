@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using app.codility.store.Models;
+﻿using app.codility.store.Models;
 using app.codility.store.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,7 +48,7 @@ namespace app.codility.store.Controllers
                 return Unauthorized();
             }
 
-            string storeCountryCode = _storeRepository.GetStores(x=>x.Id == customer.StoreId, false).FirstOrDefault()?.CountryCode;
+            string storeCountryCode = _storeRepository.GetStores(x => x.Id == customer.StoreId, false).FirstOrDefault()?.CountryCode;
             if (string.IsNullOrEmpty(storeCountryCode) || !storeCountryCode.Equals(countryCode, StringComparison.InvariantCultureIgnoreCase))
             {
                 return Forbid();
@@ -76,7 +72,7 @@ namespace app.codility.store.Controllers
                 return Unauthorized();
             }
 
-            string storeCountryCode = _storeRepository.GetStores(x=>x.Id ==storeId).FirstOrDefault()?.CountryCode;
+            string storeCountryCode = _storeRepository.GetStores(x => x.Id == storeId).FirstOrDefault()?.CountryCode;
             if (string.IsNullOrEmpty(storeCountryCode) || !storeCountryCode.Equals(countryCode, StringComparison.InvariantCultureIgnoreCase))
             {
                 return Forbid();
